@@ -1,8 +1,13 @@
 #include<stdio.h>
 
-void main()
-{
-	char a= 127+127;
-	printf("%d",a);
 
+
+
+int main()
+{	int a=3;
+	int b=5;
+	int *p=&b;
+	int **q=&p;
+	*q=&a;
+	printf("%d",*q);
 }

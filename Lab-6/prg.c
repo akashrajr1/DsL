@@ -9,12 +9,22 @@ int f1=max,r1=max;
 insert(int n,int e)
 {
 	if(n==1)
-	{if(f0+1==f1)
 	{
-		printf("Queue is full\n");
-		return;
-	}
-	else q[++f0]=e;}
+
+			if(f0+1==f1)
+			{	if(r0==-1)
+				{
+					printf("Queue is full\n");
+					return;
+				}
+				else
+					f0=-1;
+			}
+				else q[++f0]=e;
+
+
+
+}
 
 	if(n==2)
 	{if(f1-1==f0)
@@ -29,14 +39,23 @@ delete(int n)
 {
 	if(n==1)
 	{
-		if(r0==f0)
-		{
-			printf("Queue is empty\n");
-			r0=f0=-1;
-			return;
-		}
 
-		printf("Element deleted is %d", q[++r0] );
+			if(r0==f0)
+			{
+				printf("Queue is empty\n");
+				r0=f0=-1;
+				return;
+			}
+
+			if(r0+1==f1)
+			{
+				r0=-1;
+				if(f0==-1)
+					return;
+			}
+			printf("Element deleted is %d", q[++r0] );
+
+
 	}
 
 	if(n==2)
@@ -66,11 +85,14 @@ main()
 
 	while(i!=4)
 	{
-		printf("Enter Queue No\n");
-		int n,e;
-		scanf("%d",&n);
+		
+		int n=0,e=0;
+		
 		printf("\n1. Insert\n2. Delete\n3. Display\n4.Exit\n");
 		scanf("%d",&i);
+		if(i==1 || i==2)
+		{printf("Enter Queue No\n");
+		scanf("%d",&n);}
 		switch(i)
 		{
 			case 1: printf("Enter Element\n");

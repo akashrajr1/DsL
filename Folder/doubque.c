@@ -1,61 +1,81 @@
 #include <stdio.h>
 
-#define max 5
+#define max 10
 
-void push(int queue[],int front[],int rear[],int element,int n)
+addright(int * rear,int element,int *front,int queue[])
 {
-		int Max[2];
-		Max[0]=rear[1];
-		Max[1]=
+	if(*front=-1)
+		*front=0;
+	if(*rear==max-1)
+		{printf("Cannot Add\n");
+		 return;}
+		queue[++(*rear)]=element;
+		printf("%d\n",*rear );
 
-			if(n==1)
-			{
-				if(front[0]==-1)
-					front[0]++;
-
-				
-				rear[0]=rear[0]+1;
-				if(rear[0]>Max[0])
-					rear[0]-=Max;
-				if(rear[0]==front[0])
-					{printf("Queue is full\n");
-						return;}
-				queue[rear[0]]=element;
-			}
-
-			if(n==2)
-
-			
 }
 
-
-void main()
+addleft(int *front,int element,int *rear,int queue[])
 {
-	int front[2]={-1,max},rear[2]={-1,max};
-	int queue[max]={0};
-	int i=0,element,n,j=0;
-	while(i!=5)
-		{printf("\n1.Push\n2.Delete\n3.Display\n4.Display Array\n5.Exit\n");
-		 scanf("%d",&i);
-		 if(i!=5 && i!=4)
-		 {printf("Enter queue number\n");
-         scanf("%d",&n);}
-		 switch(i)
-		 {
-		 	case 1: printf("Enter element\n");
-		 			scanf("%d",&element);
-		 			push(queue,front,rear,element,n);
-		 			break;
-		 	case 2: dqueue(queue,front,rear,n);
-		 			break;
-		 	case 3: display(queue,front,rear,n);
-		 			break;
-		 	case 4: for(j=0;j<max;j++)
-		 			printf("%d ",queue[j]);
-		 	default:;
-		 }
+	if(*front<1)
+	{
+		printf("Cannot Add\n");
+	}
+	else
+		queue[--(*front)]=element;
+}
 
+delright(int *rear,int queue[])
+{
+	if(*rear==-1)
+		printf("Cannot delete\n");
+	else
+		printf("Element deleted is %d\n",queue[(*rear)--]);
+}
 
-		}
+delleft(int *front,int queue[])
+{
+	if(*front==max-1)
+		printf("Cannot delete\n");
+	else
+		printf("Element deleted is %d\n",queue[(*front)++]);
+}
 
+display(int rear,int front,int queue[])
+{
+	int i=front;
+	for(;i<=rear;i++)
+		printf("%d\t",queue[i]);
+}
+main()
+{
+	int front=-1,rear=-1;
+	int queue[max]={0},element;
+			int i=0;
+			while(i!=6)
+			{
+				printf("\n1. Insert Right\n2. Insert Left\n3. Delete Right\n4. Delete Left\n5. Display\n6. Exit\n");
+				scanf("%d",&i);
+				switch (i) {
+					case 1:
+						printf("Enter element\n");
+						scanf("%d",&element);
+						addright(&rear,element,&front,queue);
+						break;
+					case 2:
+						printf("Enter element\n");
+						scanf("%d",&element);
+						addleft(&front,element,&rear,queue);
+						break;
+					case 3:
+						delright(&rear,queue);
+						break;
+					case 4:
+						delleft(&rear,queue);
+						break;
+					case 5:
+						display(rear,front,queue);
+					default:;	
+					
+				}
+			}
 }

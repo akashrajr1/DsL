@@ -25,7 +25,6 @@ Node insert(Node Head, int data){
 }
 
 Node display(Node Head){
-    printf("Working\n");
     Node cur=Head;
     while(cur)
     {   printf("%d -->",cur->data);    

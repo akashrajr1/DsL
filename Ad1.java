@@ -1,5 +1,5 @@
 // ISBN Number 
-import java.util.Scanner;
+import java.util.*;
 import java.lang.Object;
 
 class isbn
